@@ -130,3 +130,22 @@ def test_tilt_limit_is_respected_on_aggressive_move(research_quad: AircraftParam
     m = tracking_metrics(run)
     assert run.status == "completed"
     assert m["tilt_max_deg"] < np.rad2deg(research_quad.limits.max_tilt) + 3.0  # small transient overshoot allowed
+
+
+@pytest.mark.slow
+def test_m400_reference_rejects_max_payload_step() -> None:
+    """+6 kg (published max payload) added at t = 2 s as a point mass at the CoM.
+
+    The payload adds no inertia (a deliberate simplification for this test). The integrator
+    bound (6 m/s^2 vertical) must allow full rejection.
+    """
+    ac = load_aircraft("m400_reference_quad")
+    mp = ac.mass_properties
+    change = ScheduledChange(2.0, "payload_+6kg",
+                             lambda p: p.set_mass_properties(MassProperties(mp.mass + 6.0, mp.inertia)),
+                             {"added_mass_kg": 6.0})
+    run = run_closed_loop(ac, controller_for(ac), Hover(np.array([0, 0, 5.0])), SimConfig(duration=25.0),
+                          changes=(change,))
+    assert run.status == "completed"
+    assert abs(run.col("p_z")[-1] - 5.0) < 0.05
+    assert run.col("mass_true")[-1] == pytest.approx(15.74)

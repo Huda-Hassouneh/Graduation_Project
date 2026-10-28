@@ -48,11 +48,24 @@ def _ref_style() -> dict:
     return {"color": INK_SECONDARY, "linestyle": "--", "linewidth": 1.1}
 
 
+def _equal_3d_axes(ax, pts: np.ndarray, min_span: float = 1.0) -> None:
+    """Equal scale on x, y, z so path geometry is not distorted by autoscaling."""
+    centre = 0.5 * (pts.max(axis=0) + pts.min(axis=0))
+    half = 0.5 * max(float(np.max(pts.max(axis=0) - pts.min(axis=0))), min_span)
+    ax.set_xlim(centre[0] - half, centre[0] + half)
+    ax.set_ylim(centre[1] - half, centre[1] + half)
+    ax.set_zlim(centre[2] - half, centre[2] + half)
+    ax.set_box_aspect((1, 1, 1))
+    ax.tick_params(labelsize=7, pad=0)
+    for axis in (ax.xaxis, ax.yaxis, ax.zaxis):
+        axis.labelpad = 2
+
+
 def run_overview(run: RunResult, title: str, path: Path) -> None:
     """3D path, per-axis position, error norm, attitude, and power/energy for one run."""
     t = run.col("t")
     p, pr = run.cols("p"), run.cols("ref_p")
-    fig = plt.figure(figsize=(11, 7.2), constrained_layout=True)
+    fig = plt.figure(figsize=(12, 7.2), constrained_layout=True)
     gs = fig.add_gridspec(4, 3)
 
     ax3 = fig.add_subplot(gs[0:2, 0], projection="3d")
@@ -62,7 +75,8 @@ def run_overview(run: RunResult, title: str, path: Path) -> None:
     ax3.set_ylabel("y north [m]")
     ax3.set_zlabel("z up [m]")
     ax3.legend(loc="upper left", fontsize=8)
-    ax3.set_title("Path (world ENU)")
+    ax3.set_title("Path (world ENU, equal axis scale)")
+    _equal_3d_axes(ax3, np.vstack([p, pr]))
 
     for i, lab in enumerate("xyz"):
         ax = fig.add_subplot(gs[i, 1])
