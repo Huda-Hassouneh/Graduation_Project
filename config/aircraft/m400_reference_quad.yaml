@@ -1,0 +1,60 @@
+# Configuration B — aircraft-reference geometry/parameters INSPIRED BY the DJI Matrice 400.
+# This is NOT a validated digital twin (configuration C). Only values marked
+# `source: manufacturer` come from DJI's published specifications (docs/aircraft_reference.md,
+# accessed 2026-10-28). Everything propulsion/inertia related is an assumption or a derivation.
+# The four-rotor X layout is inferred (see docs/aircraft_reference.md, "Rotor configuration").
+name: m400_reference_quad
+model_class: aircraft_reference_geometry
+environment:
+  gravity: {value: 9.80665, units: m/s^2, source: standard}
+  air_density: {value: 1.225, units: kg/m^3, source: standard, note: "ISA sea level"}
+mass_properties:
+  total_mass: {value: 9.74, units: kg, source: manufacturer, note: "takeoff weight with batteries and propellers, 9740 +/- 40 g; excludes payload"}
+  components:
+    - name: battery_tb100
+      mass: {value: 4.72, units: kg, source: manufacturer, note: "TB100 4720 +/- 20 g; mounting position and size assumed"}
+      position: {value: [0.0, 0.0, 0.0], units: m, source: assumed}
+      size: {value: [0.30, 0.20, 0.10], units: m, source: assumed}
+    - name: motor_propeller
+      at_rotors: 1.0
+      mass: {value: 0.40, units: kg, source: assumed}
+    - name: arm
+      at_rotors: 0.5
+      mass: {value: 0.25, units: kg, source: assumed}
+    - name: central_body
+      mass: {value: remainder, source: derived}
+      position: {value: [0.0, 0.0, -0.05], units: m, source: assumed}
+      size: {value: [0.45, 0.35, 0.25], units: m, source: assumed}
+geometry:
+  layout: x_quad
+  arm_length: {value: 0.535, units: m, source: derived, note: "half of the 1070 mm manufacturer diagonal wheelbase"}
+  rotor_height: {value: 0.05, units: m, source: assumed}
+  # Diagonal pairs counter-rotate (required for yaw balance). The absolute assignment for the
+  # real aircraft is UNVERIFIED; swapping it only flips the sign of the yaw allocation row.
+  spin_dirs: [1, -1, 1, -1]
+propulsion:
+  rotor_diameter: {value: 0.635, units: m, source: manufacturer, note: "25 inch, propeller model 2510F"}
+  thrust_coefficient: {value: 0.10, units: "-", source: assumed}
+  power_coefficient: {value: 0.045, units: "-", source: assumed}
+  max_thrust_to_weight: {value: 1.6, units: "-", source: assumed, note: "at maximum takeoff weight"}
+  max_thrust_reference_mass: {value: 15.8, units: kg, source: manufacturer, note: "maximum takeoff weight"}
+  idle_speed_fraction: {value: 0.15, units: "-", source: assumed}
+  motor_time_constant: {value: 0.06, units: s, source: assumed, note: "larger rotors assumed slower than research quad"}
+drag:
+  linear: {value: [0.0, 0.0, 0.0], units: N s/m, source: assumed}
+  quadratic:
+    value: [0.107, 0.107, 0.30]
+    units: N s^2/m^2
+    source: derived
+    note: >-
+      horizontal: m g tan(35 deg) / (25 m/s)^2, i.e. assumes the manufacturer max horizontal
+      speed is drag-limited at the manufacturer max pitch angle (crude upper-bound reasoning);
+      vertical value assumed.
+power:
+  propulsion_efficiency: {value: 0.80, units: "-", source: assumed}
+  avionics_power: {value: 60.0, units: W, source: assumed}
+  battery_energy_wh: {value: 977.0, units: Wh, source: manufacturer, note: "TB100 nominal energy"}
+limits:
+  max_tilt_deg: {value: 35.0, units: deg, source: manufacturer, note: "max pitch angle"}
+  max_body_rate_deg_s: {value: 120.0, units: deg/s, source: assumed, note: "not published"}
+  max_yaw_rate_deg_s: {value: 100.0, units: deg/s, source: manufacturer}

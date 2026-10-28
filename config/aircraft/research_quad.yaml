@@ -1,0 +1,50 @@
+# Configuration A — configurable research quadrotor (NOT a model of any commercial aircraft).
+# Used to develop and validate control/diagnosis algorithms. All airframe values are assumptions
+# chosen to resemble a generic 450 mm-class X quadrotor; see docs/aircraft_reference.md.
+name: research_quad
+model_class: research_quadrotor
+environment:
+  gravity: {value: 9.80665, units: m/s^2, source: standard, note: "standard gravity (CGPM 1901)"}
+  air_density: {value: 1.225, units: kg/m^3, source: standard, note: "ISA sea level, 15 degC"}
+mass_properties:
+  total_mass: {value: 1.5, units: kg, source: assumed}
+  components:
+    - name: battery
+      mass: {value: 0.40, units: kg, source: assumed, note: "4S ~5 Ah LiPo class"}
+      position: {value: [0.0, 0.0, -0.02], units: m, source: assumed}
+      size: {value: [0.14, 0.045, 0.035], units: m, source: assumed}
+    - name: motor_propeller
+      at_rotors: 1.0
+      mass: {value: 0.06, units: kg, source: assumed}
+    - name: arm
+      at_rotors: 0.5
+      mass: {value: 0.03, units: kg, source: assumed}
+    - name: central_body
+      mass: {value: remainder, source: derived, note: "total_mass minus listed components"}
+      position: {value: [0.0, 0.0, 0.0], units: m, source: assumed}
+      size: {value: [0.15, 0.15, 0.06], units: m, source: assumed}
+geometry:
+  layout: x_quad
+  arm_length: {value: 0.225, units: m, source: assumed, note: "half of a 450 mm diagonal wheelbase"}
+  rotor_height: {value: 0.02, units: m, source: assumed, note: "rotor plane above geometric centre"}
+  # Rotors numbered CCW from front-right (1 FR, 2 FL, 3 RL, 4 RR); +1 = CCW seen from above.
+  spin_dirs: [1, -1, 1, -1]
+propulsion:
+  rotor_diameter: {value: 0.254, units: m, source: assumed, note: "10 inch propeller"}
+  thrust_coefficient: {value: 0.10, units: "-", source: assumed, note: "C_T in T = C_T rho n^2 D^4; sensitivity analysis required"}
+  power_coefficient: {value: 0.045, units: "-", source: assumed, note: "C_P in P = C_P rho n^3 D^5; sensitivity analysis required"}
+  max_thrust_to_weight: {value: 2.0, units: "-", source: assumed}
+  max_thrust_reference_mass: {value: 1.5, units: kg, source: assumed, note: "mass at which max_thrust_to_weight applies"}
+  idle_speed_fraction: {value: 0.10, units: "-", source: assumed, note: "omega_min / omega_max"}
+  motor_time_constant: {value: 0.04, units: s, source: assumed}
+drag:
+  linear: {value: [0.0, 0.0, 0.0], units: N s/m, source: assumed, note: "rotor-induced linear drag neglected in baseline"}
+  quadratic: {value: [0.0245, 0.0245, 0.037], units: N s^2/m^2, source: assumed, note: "0.5 rho C_d A with C_d = 1, A = 0.04 / 0.06 m^2"}
+power:
+  propulsion_efficiency: {value: 0.75, units: "-", source: assumed}
+  avionics_power: {value: 5.0, units: W, source: assumed}
+  battery_energy_wh: {value: 74.0, units: Wh, source: assumed, note: "4S 5000 mAh nominal"}
+limits:
+  max_tilt_deg: {value: 35.0, units: deg, source: assumed}
+  max_body_rate_deg_s: {value: 200.0, units: deg/s, source: assumed}
+  max_yaw_rate_deg_s: {value: 120.0, units: deg/s, source: assumed}
