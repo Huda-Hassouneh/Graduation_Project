@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "graduation_project"
+version = "0.1.0"
+description = "Energy-aware active diagnosis and safe trajectory recovery for multirotors (simulation-first research platform)"
+requires-python = ">=3.12"
+# Versions pinned to what is verified in the development environment
+# (Ubuntu 24.04 system packages); see requirements.txt and docs/environment.md.
+dependencies = [
+    "numpy==1.26.4",
+    "scipy==1.11.4",
+    "matplotlib==3.6.3",
+    "PyYAML==6.0.1",
+]
+
+[project.optional-dependencies]
+test = ["pytest==7.4.4"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+markers = [
+    "slow: comprehensive tests excluded from the quick smoke run (deselect with -m 'not slow')",
+]
