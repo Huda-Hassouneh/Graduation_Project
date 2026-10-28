@@ -29,7 +29,9 @@ def git_info() -> dict[str, Any]:
         return subprocess.run(["git", *args], cwd=REPO_ROOT, capture_output=True, text=True, check=True).stdout.strip()
 
     try:
-        return {"commit": git("rev-parse", "HEAD"), "dirty": bool(git("status", "--porcelain"))}
+        # Generated outputs (results/, figures/) do not affect reproducibility of a run.
+        status = git("status", "--porcelain", "--", ".", ":(exclude)results", ":(exclude)figures")
+        return {"commit": git("rev-parse", "HEAD"), "dirty": bool(status)}
     except (subprocess.CalledProcessError, FileNotFoundError):
         return {"commit": None, "dirty": None}
 
