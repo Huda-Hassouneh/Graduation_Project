@@ -1,0 +1,36 @@
+# Baseline cascaded PID gains (derivation: docs/controller_design.md, section 3).
+#
+# Rate loop with first-order motor lag tau_m:  tau_m s^2 + s + K_w = 0
+#   -> damping ~0.7 requires K_w ~ 0.51 / tau_m.
+# Attitude P gain ~ rate-loop natural frequency / 3.5.
+# Position loop: closed-loop poles placed at (s + a)(s^2 + 2 zeta wn s + wn^2);
+#   Kp = wn^2 + 2 zeta wn a,  Kd = 2 zeta wn + a,  Ki = a wn^2   (computed in code).
+#   `a` is the integrator pole [1/s]; it sets how fast steady disturbances are rejected.
+# These are engineering choices, not optimised values. They are identical for every
+# experimental condition on a given aircraft (no per-scenario retuning).
+control_rate_hz: 250
+aircraft:
+  research_quad:
+    position_design:
+      xy: {wn: 1.2, zeta: 0.8, a: 0.5}
+      z: {wn: 1.5, zeta: 0.8, a: 0.6}
+    gains:
+      # Max integral contribution [m/s^2]. Vertical bound must cover the mass uncertainty
+      # to be rejected: delta_m / m * g (6 m/s^2 ~ +60 % mass); horizontal covers drag/wind.
+      pos_i_limit: [2.0, 2.0, 6.0]
+      att_p: [5.0, 5.0, 3.0]        # [1/s]; rate-loop wn = sqrt(12 / 0.04) = 17.3 rad/s
+      rate_p: [12.0, 12.0, 6.0]     # 0.51 / 0.04 s = 12.75
+      rate_i: [4.0, 4.0, 2.0]
+      rate_i_limit: 5.0             # [rad/s^2]
+      min_thrust_fraction: 0.2
+  m400_reference_quad:
+    position_design:
+      xy: {wn: 0.9, zeta: 0.8, a: 0.4}
+      z: {wn: 1.2, zeta: 0.8, a: 0.5}
+    gains:
+      pos_i_limit: [2.0, 2.0, 6.0]  # +6 kg max payload on 9.74 kg = +62 % -> ~6 m/s^2
+      att_p: [3.3, 3.3, 2.0]        # rate-loop wn = sqrt(8 / 0.06) = 11.5 rad/s
+      rate_p: [8.0, 8.0, 4.0]       # 0.51 / 0.06 s = 8.5
+      rate_i: [2.5, 2.5, 1.2]
+      rate_i_limit: 3.0
+      min_thrust_fraction: 0.2
