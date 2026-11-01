@@ -1,0 +1,9 @@
+name: sensor_dropout
+description: GNSS (position, velocity and heading) drops out for 20 s during coverage.
+fault_class: sensor_dropout
+sensor_faults:
+  - {sensor: gnss_pos, kind: dropout, t_start: 45.0, t_end: 65.0}
+  - {sensor: gnss_vel, kind: dropout, t_start: 45.0, t_end: 65.0}
+  - {sensor: heading, kind: dropout, t_start: 45.0, t_end: 65.0}
+randomize: {t_jitter: 10.0, mag_jitter: 0.0}
+expected_behaviour: Staleness detected; dead-reckoning with baro/range; speed reduction and extra stand-off.

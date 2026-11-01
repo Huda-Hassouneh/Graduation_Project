@@ -85,7 +85,7 @@ class RotorHealth:
 
 
 def saturate_speed_command(omega_cmd: FloatArray, cfg: RotorConfig) -> FloatArray:
-    return np.clip(omega_cmd, cfg.omega_min, cfg.omega_max)
+    return np.minimum(np.maximum(omega_cmd, cfg.omega_min), cfg.omega_max)
 
 
 def motor_speed_derivative(

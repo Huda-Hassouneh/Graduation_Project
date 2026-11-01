@@ -1,0 +1,8 @@
+name: sensor_delay
+description: Unreported GNSS latency of 0.3 s (timestamps not corrected).
+fault_class: gnss_delay
+sensor_faults:
+  - {sensor: gnss_pos, kind: delay, t_start: 45.0, t_end: 1.0e+9, magnitude: 0.3}
+  - {sensor: gnss_vel, kind: delay, t_start: 45.0, t_end: 1.0e+9, magnitude: 0.3}
+randomize: {t_jitter: 10.0, mag_jitter: 0.2}
+expected_behaviour: Innovations correlated with velocity; latency identified while moving; speed reduction.

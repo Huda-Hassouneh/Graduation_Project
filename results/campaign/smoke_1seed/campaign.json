@@ -1,0 +1,94 @@
+{
+  "name": "smoke_1seed",
+  "scenarios": [
+    "actuator_degradation",
+    "compound",
+    "drag_change",
+    "energy_limited",
+    "generalization",
+    "invalid_measurements",
+    "mass_change",
+    "nominal",
+    "response_delay",
+    "sensor_delay",
+    "sensor_dropout",
+    "sensor_noise",
+    "wind_gust"
+  ],
+  "conditions": {
+    "A": [
+      "pid",
+      {
+        "enabled": false,
+        "adaptation": true,
+        "diagnosis_mode": "event",
+        "periodic_interval": 10.0,
+        "active": true,
+        "energy_aware": true,
+        "replanning": true,
+        "expected_density_ratio": 1.0,
+        "rate": 50.0
+      }
+    ],
+    "B": [
+      "dob",
+      {
+        "enabled": false,
+        "adaptation": true,
+        "diagnosis_mode": "event",
+        "periodic_interval": 10.0,
+        "active": true,
+        "energy_aware": true,
+        "replanning": true,
+        "expected_density_ratio": 1.0,
+        "rate": 50.0
+      }
+    ],
+    "C": [
+      "pid",
+      {
+        "enabled": true,
+        "adaptation": true,
+        "diagnosis_mode": "event",
+        "periodic_interval": 10.0,
+        "active": true,
+        "energy_aware": true,
+        "replanning": true,
+        "expected_density_ratio": 1.0,
+        "rate": 50.0
+      }
+    ],
+    "D": [
+      "dob",
+      {
+        "enabled": true,
+        "adaptation": true,
+        "diagnosis_mode": "event",
+        "periodic_interval": 10.0,
+        "active": true,
+        "energy_aware": true,
+        "replanning": true,
+        "expected_density_ratio": 1.0,
+        "rate": 50.0
+      }
+    ]
+  },
+  "seeds": [
+    1000
+  ],
+  "git": {
+    "commit": "a1cb0b351d538c9a069ec60780fbad6a8d7b2fa1",
+    "dirty": true
+  },
+  "code_sha256": "945c5fdf0227c541db4008b194abf6b261bca1e365b3bd595fff8d832d3d6fe0",
+  "software": {
+    "graduation_project": "0.1.0",
+    "python": "3.12.3",
+    "numpy": "1.26.4",
+    "scipy": "1.11.4",
+    "matplotlib": "3.6.3",
+    "pyyaml": "6.0.1"
+  },
+  "aircraft": "dji_matrice_400",
+  "started_utc": "2026-11-01T11:38:25Z"
+}

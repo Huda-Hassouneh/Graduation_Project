@@ -1,5 +1,8 @@
 # Architecture
 
+> The DJI Matrice 400 phase extends this architecture with sensors, estimation, identification,
+> diagnosis, active diagnosis, recovery and energy management: see [CONTROL_ARCHITECTURE.md](CONTROL_ARCHITECTURE.md).
+
 ## Authoritative simulator
 
 The **Python mathematical simulator** (`src/graduation_project`) is the authoritative physics
@@ -38,7 +41,8 @@ MultirotorPlant (truth) ──► ideal_state_feedback ──► StateEstimate �
 | `experiments/` | runner, scenarios, run persistence | done (M2) |
 | `metrics/` | tracking and energy metrics | done (M2) |
 | `visualization/` | publication figures | done (M2) |
-| `simulation/` | Gazebo models and worlds | empty (M3) |
+| `gazebo/` | SDF model/world generation, kinematic replay (visualisation only) | done (M3) |
+| `simulation/` | generated Gazebo models and worlds, launcher, replay script | done (M3) |
 
 ## Separation rules enforced in code
 

@@ -14,6 +14,7 @@ Derived model coefficients are computed here (see docs/model_equations.md, secti
 from __future__ import annotations
 
 import copy
+import dataclasses
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
@@ -189,7 +190,13 @@ def load_aircraft(name_or_path: str | Path) -> AircraftParams:
     path = Path(name_or_path)
     if not path.suffix:
         path = CONFIG_DIR / "aircraft" / f"{name_or_path}.yaml"
-    return aircraft_from_dict(load_yaml(path))
+    raw = load_yaml(path)
+    if raw.get("schema_version") == 2:  # traceable specification database (aircraft_spec.py)
+        from graduation_project.aircraft_spec import load_spec, spec_to_v1
+
+        spec = load_spec(path)
+        return dataclasses.replace(aircraft_from_dict(spec_to_v1(spec)), raw=spec)
+    return aircraft_from_dict(raw)
 
 
 def derived_summary(ac: AircraftParams) -> dict[str, float]:

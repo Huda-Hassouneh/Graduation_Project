@@ -1,0 +1,18 @@
+# Disturbance-observer-assisted controller (controllers/dob.py). PID gains are taken unchanged
+# from pid_baseline.yaml so the comparison isolates the observer.
+#
+# Bandwidth L: the observer low-pass time constant is 1/L. It must stay well below the
+# position-loop crossover of the estimated-velocity noise and above the disturbance content to
+# reject. M400 position loop wn = 0.9-1.2 rad/s -> L = 2.5 rad/s (time constant 0.4 s).
+# max_compensation bounds the feed-forward: horizontal = g tan(25 deg) ~ 4.6 m/s^2 leaves tilt
+# authority for tracking; vertical 6 m/s^2 covers the +62 % maximum payload ratio.
+aircraft:
+  dji_matrice_400:
+    bandwidth: [2.5, 2.5, 2.5]
+    max_compensation: [4.5, 4.5, 6.0]
+  m400_reference_quad:
+    bandwidth: [2.5, 2.5, 2.5]
+    max_compensation: [4.5, 4.5, 6.0]
+  research_quad:
+    bandwidth: [4.0, 4.0, 4.0]
+    max_compensation: [4.5, 4.5, 6.0]

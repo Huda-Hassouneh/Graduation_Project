@@ -12,6 +12,8 @@ Conventions (see docs/coordinate_frames.md):
 
 from __future__ import annotations
 
+import math
+
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
 
@@ -31,9 +33,14 @@ def cross3(a: FloatArray, b: FloatArray) -> FloatArray:
     return np.array([a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]])
 
 
+def norm(v: FloatArray) -> float:
+    """Euclidean norm of a 1-D float array (same arithmetic as ``np.linalg.norm`` for 1-D input, less overhead)."""
+    return math.sqrt(float(np.dot(v, v)))
+
+
 def quat_normalize(q: ArrayLike) -> FloatArray:
     q = np.asarray(q, dtype=float)
-    n = np.linalg.norm(q)
+    n = norm(q)
     if not np.isfinite(n) or n < 1e-12:
         raise ValueError(f"cannot normalise quaternion {q}")
     return q / n
@@ -41,8 +48,8 @@ def quat_normalize(q: ArrayLike) -> FloatArray:
 
 def quat_multiply(p: ArrayLike, q: ArrayLike) -> FloatArray:
     """Hamilton product ``p (x) q``."""
-    pw, px, py, pz = np.asarray(p, dtype=float)
-    qw, qx, qy, qz = np.asarray(q, dtype=float)
+    pw, px, py, pz = np.asarray(p, dtype=float).tolist()
+    qw, qx, qy, qz = np.asarray(q, dtype=float).tolist()
     return np.array(
         [
             pw * qw - px * qx - py * qy - pz * qz,
@@ -60,7 +67,7 @@ def quat_conjugate(q: ArrayLike) -> FloatArray:
 
 def quat_to_rotmat(q: ArrayLike) -> FloatArray:
     """Rotation matrix ``R`` (body-to-world) of a unit quaternion."""
-    w, x, y, z = np.asarray(q, dtype=float)
+    w, x, y, z = np.asarray(q, dtype=float).tolist()
     return np.array(
         [
             [1 - 2 * (y * y + z * z), 2 * (x * y - w * z), 2 * (x * z + w * y)],

@@ -1,0 +1,7 @@
+name: actuator_degradation
+description: Rotor 1 loses 15 % effectiveness (e.g. chipped propeller). Severity sweep with the stock PID (seed 0) - 10 % max err 0.59 m, 15 % 1.00 m, 20 % 1.53 m (0.11 m clearance), 30 % crash into a balcony railing at 3 m stand-off.
+fault_class: actuator_degradation_or_com_shift
+truth_events:
+  - {t: 45.0, type: rotor_effectiveness, rotor: 1, value: 0.85}
+randomize: {t_jitter: 10.0, mag_jitter: 0.1}
+expected_behaviour: Persistent torque residual; reduce speed, extra stand-off; abort only if torque margin insufficient.

@@ -1,0 +1,77 @@
+# Visual / collision geometry for the Gazebo models of dji_matrice_400 (static replay model and the
+# Gazebo-physics flight model). These values affect ONLY appearance and contact shapes in Gazebo; the
+# Python simulator never reads them. Mass, inertia, rotor positions/diameter/spin and the body/battery
+# boxes come from config/aircraft/dji_matrice_400.yaml (schema v2).
+#
+# M400-INSPIRED appearance, NOT manufacturer CAD and NOT a digital twin. Only the published envelope
+# (980 x 760 x 480 mm unfolded with landing gear) is manufacturer data; every shape below is an assumed
+# placeholder chosen to resemble an enterprise quadrotor (sensor pods, top LiDAR, dual GNSS antennas,
+# front payload, tall landing gear). Positions are in the geometric frame G (FLU), shifted by -r_CoM.
+aircraft: dji_matrice_400
+arm:
+  width: {value: 0.050, units: m, source: assumed, note: "folding carbon arm"}
+  height: {value: 0.040, units: m, source: assumed}
+motor:
+  radius: {value: 0.045, units: m, source: assumed, note: "7510-class motor bell"}
+  height: {value: 0.065, units: m, source: assumed}
+rotor_disk:
+  thickness: {value: 0.006, units: m, source: assumed, note: "visual swept disk; diameter from the aircraft spec (25 in)"}
+landing_gear:
+  bottom_z: {value: -0.33, units: m, source: assumed, note: "gear-to-mast height = published 480 mm"}
+  track: {value: 0.50, units: m, source: assumed}
+  skid_length: {value: 0.60, units: m, source: assumed}
+  skid_section: {value: 0.028, units: m, source: assumed}
+extra_boxes:
+  - name: payload_gimbal
+    position: {value: [0.40, 0.0, -0.24], units: m, source: assumed, note: "front payload placeholder (e.g. H30-series gimbal camera); front face at x = 0.49 m"}
+    size: {value: [0.18, 0.15, 0.15], units: m, source: assumed}
+  - name: fpv_camera
+    position: {value: [0.235, 0.0, -0.02], units: m, source: assumed, note: "front FPV camera pod"}
+    size: {value: [0.03, 0.06, 0.05], units: m, source: assumed}
+  - name: vision_pod_front
+    position: {value: [0.232, 0.0, 0.05], units: m, source: assumed, note: "binocular vision placeholder"}
+    size: {value: [0.025, 0.14, 0.04], units: m, source: assumed}
+  - name: vision_pod_rear
+    position: {value: [-0.232, 0.0, 0.05], units: m, source: assumed}
+    size: {value: [0.025, 0.14, 0.04], units: m, source: assumed}
+  - name: vision_pod_left
+    position: {value: [0.0, 0.182, 0.05], units: m, source: assumed}
+    size: {value: [0.14, 0.025, 0.04], units: m, source: assumed}
+  - name: vision_pod_right
+    position: {value: [0.0, -0.182, 0.05], units: m, source: assumed}
+    size: {value: [0.14, 0.025, 0.04], units: m, source: assumed}
+  - name: gnss_mast
+    position: {value: [0.0, 0.0, 0.1125], units: m, source: assumed, note: "top mount; top at z = 0.15 m (published 480 mm height)"}
+    size: {value: [0.06, 0.06, 0.075], units: m, source: assumed}
+extra_cylinders:
+  - name: top_lidar
+    position: {value: [0.0, 0.0, 0.105], units: m, source: assumed, note: "rotating LiDAR placeholder"}
+    radius: {value: 0.055, units: m, source: assumed}
+    length: {value: 0.06, units: m, source: assumed}
+    colour: sensor
+  - name: gnss_antenna_left
+    position: {value: [-0.05, 0.16, 0.085], units: m, source: assumed, note: "dual-antenna RTK heading placeholder"}
+    radius: {value: 0.035, units: m, source: assumed}
+    length: {value: 0.02, units: m, source: assumed}
+    colour: antenna
+  - name: gnss_antenna_right
+    position: {value: [-0.05, -0.16, 0.085], units: m, source: assumed}
+    radius: {value: 0.035, units: m, source: assumed}
+    length: {value: 0.02, units: m, source: assumed}
+    colour: antenna
+published_envelope:
+  size: {value: [0.98, 0.76, 0.48], units: m, source: manufacturer, note: "980 x 760 x 480 mm unfolded, with landing gear"}
+  centre_xy: {value: [0.0, 0.0], units: m, source: assumed, note: "placement relative to the hubs is not published"}
+flight_model:
+  # Gazebo-physics variant (gz MulticopterMotorModel + MulticopterVelocityControl). SECONDARY cross-check
+  # only: Gazebo's own controller and motor model, no estimator, no airframe drag. Gains derived from the
+  # Python PID design (docs/SIMULATION_MODEL.md): attitude torque gain ~ J * rate_p * att_p, rate damping
+  # ~ J * rate_p, velocity force gain ~ m * Kd_position.
+  rotor_link_mass: {value: 0.05, units: kg, source: assumed, note: "25 in folding propeller + hub; subtracted from the base link"}
+  rotor_velocity_slowdown: {value: 10.0, units: "-", source: assumed, note: "Gazebo joint spins at omega / slowdown (as in the gz X3 example)"}
+  velocity_gain: {value: [18.0, 18.0, 25.0], units: N s/m, source: derived}
+  attitude_gain: {value: [8.7, 9.6, 3.0], units: N m/rad, source: derived}
+  angular_rate_gain: {value: [2.7, 2.9, 2.6], units: N m s/rad, source: derived}
+  maximum_linear_acceleration: {value: [2.0, 2.0, 2.0], units: m/s^2, source: assumed}
+  maximum_linear_velocity: {value: [3.0, 3.0, 2.0], units: m/s, source: assumed}
+  maximum_angular_velocity: {value: [1.5, 1.5, 1.0], units: rad/s, source: assumed}

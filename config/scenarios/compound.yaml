@@ -1,0 +1,12 @@
+name: compound
+description: Turbulent steady wind + 15 % mass increase + GNSS noise burst, staggered in time.
+fault_class: mass_or_thrust_change
+wind:
+  mean: {speed_ref: 3.0, direction_deg: 60.0, z_ref: 10.0, alpha: 0.2}
+  turbulence: {w20: 3.0}
+truth_events:
+  - {t: 40.0, type: mass_scale, value: 1.15}
+sensor_faults:
+  - {sensor: gnss_pos, kind: noise, t_start: 60.0, t_end: 80.0, magnitude: 8.0}
+randomize: {t_jitter: 8.0, mag_jitter: 0.1}
+expected_behaviour: Several residuals; the framework must not over-claim; model update for the mass change.

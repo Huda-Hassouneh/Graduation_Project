@@ -1,0 +1,8 @@
+name: wind_gust
+description: Temporary wind disturbance - one 1-cosine gust toward the facade during coverage.
+fault_class: wind_gust
+wind:
+  gusts:
+    - {t_start: 45.0, duration: 4.0, amplitude: [0.0, 6.0, 0.0]}
+randomize: {t_jitter: 10.0, mag_jitter: 0.2}
+expected_behaviour: Transient force residual; classified as a gust; mission continues without replanning.

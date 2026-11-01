@@ -11,6 +11,8 @@
 | pip / ensurepip | **not available** | `pip3: command not found`, `No module named 'ensurepip'` |
 | ROS 2 | Jazzy at `/opt/ros/jazzy` | `source /opt/ros/jazzy/setup.bash && ros2 --help` |
 | Gazebo | Gazebo Sim 8.15.0 (Harmonic) | `gz sim --version` |
+| Gazebo Python bindings | `gz.transport13`, `gz.msgs10` in `/usr/lib/python3/dist-packages` (no ROS sourcing needed) | `python3 -c "import gz.transport13"` (2026-10-30) |
+| Gazebo model path | not set in a fresh shell; `simulation/gazebo/env.sh` sets `GZ_SIM_RESOURCE_PATH` and `SDF_PATH` | `echo $GZ_SIM_RESOURCE_PATH` (2026-10-30) |
 | GitHub CLI | **not installed** | `gh: command not found` |
 | Git | 2.43.0 | `git --version` |
 

@@ -1,0 +1,7 @@
+name: response_delay
+description: Actuator response delay - 80 ms transport delay added to rotor commands.
+fault_class: response_delay
+truth_events:
+  - {t: 45.0, type: command_delay, value: 0.08}
+randomize: {t_jitter: 10.0, mag_jitter: 0.2}
+expected_behaviour: Lag identifiable mainly with thrust excitation; tracking degradation; speed reduction.

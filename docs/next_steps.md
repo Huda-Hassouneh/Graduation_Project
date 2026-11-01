@@ -1,5 +1,22 @@
 # Next steps
 
+## Current position (2026-11-01)
+
+The DJI Matrice 400 company-platform phase is implemented (docs/PROJECT_STATUS.md): spec database, M400
+reference model with sensors/ESKF, PID + DOB controllers, the research framework, facade mission, 13
+scenarios, campaigns, Gazebo replay and a Gazebo-physics flight model. The older milestone plan below is
+kept for history; Milestones 4 (wind and sensors) and parts of 5–8 were delivered in that phase.
+
+**Next engineering milestone (recommended): DJI-interface-realistic evaluation.**
+1. Literature review (docs/literature_review.md scope) before any contribution or novelty claim.
+2. Add a velocity-setpoint "DJI mode" to the simulator: research framework as an outer loop at 10–25 Hz
+   over a DJI-like inner loop with measured-style latency; re-formulate identification on commanded
+   velocity -> measured acceleration; re-run the campaign (DJI_MATRICE_400_INTEGRATION_PLAN.md §7, §10.1).
+3. Finish the 30-seed campaigns if fewer seeds were completed (they are resumable).
+4. When the aircraft is available: read-only telemetry logging (rates, latency), then identification
+   flights to replace assumptions (ASSUMPTIONS_AND_LIMITATIONS.md §6).
+
+
 Milestones 0–2 are done (see validation_report.md). These are the exact next actions, in order.
 
 ## Open verification items (do first, small)
@@ -10,6 +27,10 @@ Milestones 0–2 are done (see validation_report.md). These are the exact next a
    and pandas analysis. Pin the versions in docs/environment.md if installed.
 
 ## Milestone 3: Gazebo world and model
+**Status (2026-10-30): implemented and verified headlessly**, with kinematic replay as the
+Gazebo role (item 4). Rotors are SDF frames, not joints. Open decisions are listed in
+docs/gazebo_milestone3.md. Original plan:
+
 1. `simulation/models/research_quad/model.sdf` and `m400_reference_quad/model.sdf`, generated
    from the YAML files by a script (one source of truth). Link origin at the CoM, inertia and
    rotor joints from the config, visual envelope for the M400 reference of 980×760×480 mm.

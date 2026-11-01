@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<!--
+  GENERATED FILE - do not edit. Regenerate with:
+    python3 simulation/worlds/generate_facade_world.py
+  World 'm400_flight_test', variant 'flat'. Frame: ENU (x east, y north, z up), origin = take-off point.
+  Scenario facade face (graduation_project.experiments.scenarios): plane through [0 8 0]
+  with outward normal [0 -1 0], from [0 8 0] to [12 8 0].
+  Building dimensions beyond that face, balconies, wings and keep-out margins are assumptions.
+  Keep-out boxes are visual markers only (no collision, not enforced by any controller).
+-->
+<sdf version="1.10">
+  <world name="m400_flight_test">
+    <physics name="1ms" type="ignored"><max_step_size>0.001</max_step_size><real_time_factor>1.0</real_time_factor></physics>
+    <plugin filename="gz-sim-physics-system" name="gz::sim::systems::Physics"/>
+    <plugin filename="gz-sim-user-commands-system" name="gz::sim::systems::UserCommands"/>
+    <plugin filename="gz-sim-scene-broadcaster-system" name="gz::sim::systems::SceneBroadcaster"/>
+    <gravity>0 0 -9.80665</gravity>
+    <scene><ambient>0.6 0.6 0.6 1</ambient><background>0.70 0.80 0.95 1</background><shadows>true</shadows></scene>
+    <light type="directional" name="sun"><cast_shadows>true</cast_shadows><pose>0 0 30 0 0 0</pose><diffuse>0.9 0.9 0.85 1</diffuse><specular>0.2 0.2 0.2 1</specular><direction>-0.4 0.3 -0.85</direction></light>
+    <model name="ground_plane"><static>true</static><link name="link"><collision name="collision"><geometry><plane><normal>0 0 1</normal><size>120 120</size></plane></geometry></collision><visual name="visual"><geometry><plane><normal>0 0 1</normal><size>120 120</size></plane></geometry><material><ambient>0.45 0.5 0.42 1</ambient><diffuse>0.45 0.5 0.42 1</diffuse><specular>0.05 0.05 0.05 1</specular></material></visual></link></model>
+    <model name="takeoff_pad"><static>true</static><pose>0 0 0.01 0 0 0</pose><link name="link"><collision name="collision"><geometry><box><size>2 2 0.02</size></box></geometry></collision><visual name="pad"><geometry><box><size>2 2 0.02</size></box></geometry><material><ambient>0.2 0.2 0.22 1</ambient><diffuse>0.2 0.2 0.22 1</diffuse><specular>0.05 0.05 0.05 1</specular></material></visual><visual name="mark_x"><pose>0 0 0.011 0 0 0</pose><geometry><box><size>1.2 0.16 0.002</size></box></geometry><material><ambient>0.95 0.85 0.1 1</ambient><diffuse>0.95 0.85 0.1 1</diffuse><specular>0.05 0.05 0.05 1</specular></material></visual><visual name="mark_y"><pose>0 0 0.011 0 0 1.57079633</pose><geometry><box><size>1.2 0.16 0.002</size></box></geometry><material><ambient>0.95 0.85 0.1 1</ambient><diffuse>0.95 0.85 0.1 1</diffuse><specular>0.05 0.05 0.05 1</specular></material></visual></link></model>
+    <model name="facade_building"><static>true</static>
+      <link name="main_block"><pose>6 13 6 0 0 0</pose><collision name="collision"><geometry><box><size>12 10 12</size></box></geometry></collision><visual name="visual"><geometry><box><size>12 10 12</size></box></geometry><material><ambient>0.82 0.8 0.76 1</ambient><diffuse>0.82 0.8 0.76 1</diffuse><specular>0.05 0.05 0.05 1</specular></material></visual></link>
+    </model>
+    <model name="keepout_zones"><static>true</static>
+      <link name="keepout_main_block"><pose>6 7.5 6.5 0 0 0</pose><visual name="visual"><geometry><box><size>14 1 13</size></box></geometry><material><ambient>0.95 0.1 0.1 0.18</ambient><diffuse>0.95 0.1 0.1 0.18</diffuse><specular>0.05 0.05 0.05 1</specular></material><transparency>0.82</transparency><cast_shadows>false</cast_shadows></visual></link>
+    </model>
+    <include><uri>model://dji_matrice_400_flight</uri><name>dji_matrice_400_flight</name><pose>0 0 0.34935729 0 0 0</pose><static>false</static></include>
+  </world>
+</sdf>

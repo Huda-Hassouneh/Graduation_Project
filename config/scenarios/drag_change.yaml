@@ -1,0 +1,9 @@
+name: drag_change
+description: Airframe drag increases 3x (e.g. attached equipment) while a 4 m/s steady cross wind blows.
+fault_class: drag_change
+wind:
+  mean: {speed_ref: 4.0, direction_deg: 0.0, z_ref: 10.0, alpha: 0.2}
+truth_events:
+  - {t: 45.0, type: drag_scale, value: 3.0}
+randomize: {t_jitter: 10.0, mag_jitter: 0.15}
+expected_behaviour: Persistent horizontal force; drag vs wind separable only with airspeed variation (passes / speed probe).

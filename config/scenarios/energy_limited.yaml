@@ -1,0 +1,5 @@
+name: energy_limited
+description: "Battery starts at 13 % SoC - the full mission plus the 5 % energy reserve is not affordable, a shortened mission is."
+fault_class: none
+battery: {soc0: 0.13}
+expected_behaviour: Energy-aware framework truncates coverage to keep the reserve; stock behaviour relies on the low-battery failsafe.

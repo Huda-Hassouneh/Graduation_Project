@@ -1,0 +1,22 @@
+# Visual / collision geometry for the Gazebo model of research_quad (Milestone 3).
+# These values affect ONLY the 3D appearance and contact shapes in Gazebo. They are not read by
+# the Python simulator. Mass, inertia, rotor hub positions, rotor diameter, spin directions and
+# the central-body / battery boxes come from config/aircraft/research_quad.yaml.
+# Positions are in the geometric frame G (docs/coordinate_frames.md); the generator shifts them
+# by -r_CoM so the SDF link origin is the centre of mass.
+aircraft: research_quad
+arm:
+  width: {value: 0.016, units: m, source: assumed}
+  height: {value: 0.012, units: m, source: assumed}
+motor:
+  radius: {value: 0.014, units: m, source: assumed, note: "2212-class motor bell"}
+  height: {value: 0.030, units: m, source: assumed}
+rotor_disk:
+  thickness: {value: 0.004, units: m, source: assumed, note: "visual swept-disk only; diameter from the aircraft config"}
+landing_gear:
+  bottom_z: {value: -0.12, units: m, source: assumed, note: "skid underside in frame G"}
+  track: {value: 0.16, units: m, source: assumed, note: "lateral distance between skid centrelines"}
+  skid_length: {value: 0.22, units: m, source: assumed}
+  skid_section: {value: 0.012, units: m, source: assumed}
+extra_boxes: []
+published_envelope: null

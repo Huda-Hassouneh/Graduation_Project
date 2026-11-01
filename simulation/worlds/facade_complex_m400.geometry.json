@@ -1,0 +1,328 @@
+{
+  "boxes": [
+    {
+      "centre": [
+        6.0,
+        13.0,
+        6.0
+      ],
+      "kind": "solid",
+      "name": "main_block",
+      "size": [
+        12.0,
+        10.0,
+        12.0
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        6.0,
+        7.5,
+        6.5
+      ],
+      "kind": "keepout",
+      "name": "keepout_main_block",
+      "size": [
+        14.0,
+        1.0,
+        13.0
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        -3.0,
+        14.0,
+        4.5
+      ],
+      "kind": "solid",
+      "name": "setback_block",
+      "size": [
+        6.0,
+        8.0,
+        9.0
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        -3.0,
+        9.5,
+        5.0
+      ],
+      "kind": "keepout",
+      "name": "keepout_setback_block",
+      "size": [
+        8.0,
+        1.0,
+        10.0
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        14.0,
+        12.25,
+        7.5
+      ],
+      "kind": "solid",
+      "name": "wing_block",
+      "size": [
+        4.0,
+        11.5,
+        15.0
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        14.0,
+        6.0,
+        8.0
+      ],
+      "kind": "keepout",
+      "name": "keepout_wing_block",
+      "size": [
+        6.0,
+        1.0,
+        16.0
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        3.0,
+        7.4,
+        4.1
+      ],
+      "kind": "solid",
+      "name": "balcony_L1_S1",
+      "size": [
+        3.0,
+        1.2,
+        0.20000000000000018
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        3.0,
+        6.825,
+        4.7
+      ],
+      "kind": "railing",
+      "name": "balcony_L1_S1_railing",
+      "size": [
+        3.0,
+        0.050000000000000044,
+        1.0
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        3.0,
+        6.9,
+        4.6
+      ],
+      "kind": "keepout",
+      "name": "keepout_balcony_L1_S1",
+      "size": [
+        5.0,
+        2.2,
+        3.2
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        9.0,
+        7.4,
+        4.1
+      ],
+      "kind": "solid",
+      "name": "balcony_L1_S2",
+      "size": [
+        3.0,
+        1.2,
+        0.20000000000000018
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        9.0,
+        6.825,
+        4.7
+      ],
+      "kind": "railing",
+      "name": "balcony_L1_S2_railing",
+      "size": [
+        3.0,
+        0.050000000000000044,
+        1.0
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        9.0,
+        6.9,
+        4.6
+      ],
+      "kind": "keepout",
+      "name": "keepout_balcony_L1_S2",
+      "size": [
+        5.0,
+        2.2,
+        3.2
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        3.0,
+        7.4,
+        7.1
+      ],
+      "kind": "solid",
+      "name": "balcony_L2_S1",
+      "size": [
+        3.0,
+        1.2,
+        0.20000000000000018
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        3.0,
+        6.825,
+        7.699999999999999
+      ],
+      "kind": "railing",
+      "name": "balcony_L2_S1_railing",
+      "size": [
+        3.0,
+        0.050000000000000044,
+        0.9999999999999991
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        3.0,
+        6.9,
+        7.6
+      ],
+      "kind": "keepout",
+      "name": "keepout_balcony_L2_S1",
+      "size": [
+        5.0,
+        2.2,
+        3.1999999999999993
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        9.0,
+        7.4,
+        7.1
+      ],
+      "kind": "solid",
+      "name": "balcony_L2_S2",
+      "size": [
+        3.0,
+        1.2,
+        0.20000000000000018
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        9.0,
+        6.825,
+        7.699999999999999
+      ],
+      "kind": "railing",
+      "name": "balcony_L2_S2_railing",
+      "size": [
+        3.0,
+        0.050000000000000044,
+        0.9999999999999991
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        9.0,
+        6.9,
+        7.6
+      ],
+      "kind": "keepout",
+      "name": "keepout_balcony_L2_S2",
+      "size": [
+        5.0,
+        2.2,
+        3.1999999999999993
+      ],
+      "yaw": 0.0
+    }
+  ],
+  "frame": "world ENU; box centre/size in metres; yaw about +z [rad]",
+  "generated_by": "simulation/worlds/generate_facade_world.py",
+  "spec": {
+    "aircraft": "dji_matrice_400",
+    "aircraft_static": true,
+    "balcony_depth": 1.2,
+    "balcony_levels": [
+      4.0,
+      7.0
+    ],
+    "balcony_slab": 0.2,
+    "balcony_spans": [
+      [
+        1.5,
+        4.5
+      ],
+      [
+        7.5,
+        10.5
+      ]
+    ],
+    "building_depth": 10.0,
+    "facade_height": 12.0,
+    "facade_normal": [
+      0.0,
+      -1.0,
+      0.0
+    ],
+    "facade_origin": [
+      0.0,
+      8.0,
+      0.0
+    ],
+    "facade_tangent": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "facade_width": 12.0,
+    "ground_size": 120.0,
+    "keepout_margin": 1.0,
+    "name": "facade_complex_m400",
+    "pad_size": 2.0,
+    "pad_thickness": 0.02,
+    "railing_height": 1.0,
+    "railing_thickness": 0.05,
+    "setback_depth": 2.0,
+    "setback_height": 9.0,
+    "setback_width": 6.0,
+    "variant": "complex",
+    "wing_height": 15.0,
+    "wing_projection": 1.5,
+    "wing_width": 4.0
+  }
+}

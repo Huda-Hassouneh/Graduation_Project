@@ -1,0 +1,7 @@
+name: sensor_noise
+description: GNSS position noise increases 15x (multipath near the facade).
+fault_class: sensor_inconsistency
+sensor_faults:
+  - {sensor: gnss_pos, kind: noise, t_start: 45.0, t_end: 1.0e+9, magnitude: 15.0}
+randomize: {t_jitter: 10.0, mag_jitter: 0.2}
+expected_behaviour: Innovation inconsistency; gating; speed reduction; mission continues.

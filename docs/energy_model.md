@@ -1,5 +1,8 @@
 # Energy model
 
+> For the DJI Matrice 400 platform (battery model, energy manager, energy-aware decisions) see
+> [ENERGY_MODEL.md](ENERGY_MODEL.md). This page describes the Milestone 2 bookkeeping only.
+
 Equations: [model_equations.md §5](model_equations.md). Code: `energy/power.py`.
 
 * **Shaft power** `P_shaft = Σ η_i k_m Ω_i³`, consistent with the `C_P` propeller model.

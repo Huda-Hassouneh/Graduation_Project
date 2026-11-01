@@ -1,0 +1,7 @@
+name: invalid_measurements
+description: 30 % of GNSS position samples are corrupted (NaN or 5 m outliers) for 30 s.
+fault_class: invalid_measurements
+sensor_faults:
+  - {sensor: gnss_pos, kind: invalid, t_start: 45.0, t_end: 75.0, magnitude: 5.0, probability: 0.3}
+randomize: {t_jitter: 10.0, mag_jitter: 0.2}
+expected_behaviour: Invalid samples rejected by validity check and chi-square gate; mission continues.

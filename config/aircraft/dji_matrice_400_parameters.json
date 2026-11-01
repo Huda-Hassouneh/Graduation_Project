@@ -1,0 +1,2211 @@
+{
+  "generated_by": "scripts/export_m400_spec.py",
+  "aircraft": "dji_matrice_400",
+  "schema_version": 2,
+  "categories": [
+    "VERIFIED_OFFICIAL",
+    "VERIFIED_SECONDARY",
+    "ENGINEERING_ESTIMATE",
+    "SIMULATION_ASSUMPTION",
+    "UNKNOWN",
+    "NOT_PUBLICLY_DISCLOSED"
+  ],
+  "sources": {
+    "DJI-SPEC": {
+      "title": "Matrice 400 - Specs",
+      "publisher": "DJI",
+      "url": "https://enterprise.dji.com/matrice-400/specs",
+      "accessed": "2026-11-01",
+      "type": "official"
+    },
+    "DJI-RN": {
+      "title": "Matrice 400 Release Notes (released 2026.05.07)",
+      "publisher": "DJI",
+      "url": "https://dl.djicdn.com/downloads/Matrice_400/RN/20260507/Matrice_400_Release_Notes_en.pdf",
+      "accessed": "2026-11-01",
+      "type": "official"
+    },
+    "DJI-MTM": {
+      "title": "Matrice 400 Maintenance Manual v1.0 (not machine-readable here; content known only from a search-engine summary)",
+      "publisher": "DJI",
+      "url": "https://dl.djicdn.com/downloads/Matrice_400/MTM/Matrice_400_Maintenance_Manual_v1.0_en.pdf",
+      "accessed": "2026-10-28",
+      "type": "secondary"
+    },
+    "DJI-STORE-PROP": {
+      "title": "DJI Matrice 400 2510F Propeller (DJI Store product page)",
+      "publisher": "DJI",
+      "url": "https://store.dji.com/hu/product/dji-matrice-m400-2510f-propeller",
+      "accessed": "2026-10-30",
+      "type": "official"
+    },
+    "DJI-MSDK-GH": {
+      "title": "DJI Mobile SDK for Android V5 (README, supported products, v5.18.0)",
+      "publisher": "DJI (dji-sdk GitHub organisation)",
+      "url": "https://github.com/dji-sdk/Mobile-SDK-Android-V5",
+      "accessed": "2026-11-01",
+      "type": "official"
+    },
+    "DJI-MSDK-VS": {
+      "title": "MSDK V5 API reference: VirtualStickFlightControlParam / IVirtualStickManager",
+      "publisher": "DJI",
+      "url": "https://developer.dji.com/api-reference-v5/android-api/Components/IVirtualStickManager/Value_FlightController_Struct_VirtualStickFlightControlParam.html",
+      "accessed": "2026-11-01",
+      "type": "secondary",
+      "note": "page is JavaScript-rendered; content known from search-engine extracts of the official page"
+    },
+    "DJI-DEV-RN": {
+      "title": "DJI Developer portal: Payload SDK / Cloud API / MSDK release entries",
+      "publisher": "DJI",
+      "url": "https://developer.dji.com",
+      "accessed": "2026-11-01",
+      "type": "secondary",
+      "note": "JavaScript-rendered; content known from search-engine extracts of the official page"
+    },
+    "DJI-PSDK-GH": {
+      "title": "DJI Payload SDK (GitHub README, V3.17.0 badge) and dji_flight_controller.h",
+      "publisher": "DJI (dji-sdk GitHub organisation)",
+      "url": "https://github.com/dji-sdk/Payload-SDK",
+      "accessed": "2026-11-01",
+      "type": "official"
+    },
+    "ISO-2533": {
+      "title": "ISO 2533:1975 Standard Atmosphere (troposphere relations)",
+      "publisher": "ISO",
+      "url": "https://www.iso.org/standard/7472.html",
+      "accessed": "2026-11-01",
+      "type": "standard",
+      "note": "standard relations; tables to be checked in the literature review"
+    },
+    "DERIVED": {
+      "title": "Derived in this repository from cited values (see `derivation` field)",
+      "publisher": "this project",
+      "url": "docs/DJI_MATRICE_400_TECHNICAL_SPECIFICATION.md",
+      "accessed": "2026-11-01",
+      "type": "derived"
+    },
+    "ENG": {
+      "title": "Engineering judgement documented in the parameter's `rationale` field",
+      "publisher": "this project",
+      "url": "docs/ASSUMPTIONS_AND_LIMITATIONS.md",
+      "accessed": "2026-11-01",
+      "type": "assumption"
+    }
+  },
+  "category_counts": {
+    "VERIFIED_OFFICIAL": 73,
+    "VERIFIED_SECONDARY": 8,
+    "ENGINEERING_ESTIMATE": 16,
+    "SIMULATION_ASSUMPTION": 45,
+    "UNKNOWN": 6,
+    "NOT_PUBLICLY_DISCLOSED": 14
+  },
+  "parameters": [
+    {
+      "path": "geometry.configuration",
+      "value": "quadrotor, symmetric X, foldable arms",
+      "units": "text",
+      "category": "VERIFIED_SECONDARY",
+      "sources": [
+        "DJI-MTM",
+        "DJI-SPEC",
+        "DERIVED"
+      ],
+      "confidence": "high",
+      "note": "rotor count is not stated on the spec page; maintenance-manual summary numbers motors 1-4; a coplanar hexagon at the published 1070 mm wheelbase would overlap the 635 mm discs (adjacent hub spacing 535 mm), a square X gives 757 mm = published 760 mm width"
+    },
+    {
+      "path": "geometry.n_rotors",
+      "value": 4,
+      "units": "-",
+      "category": "VERIFIED_SECONDARY",
+      "sources": [
+        "DJI-MTM",
+        "DERIVED"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "geometry.diagonal_wheelbase",
+      "value": 1.07,
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "geometry.dimensions_unfolded_lwh",
+      "value": [
+        0.98,
+        0.76,
+        0.48
+      ],
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "with landing gear"
+    },
+    {
+      "path": "geometry.dimensions_folded_lwh",
+      "value": [
+        0.49,
+        0.49,
+        0.48
+      ],
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "with landing gear and gimbal"
+    },
+    {
+      "path": "geometry.arm_length",
+      "value": 0.535,
+      "units": "m",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "DJI-SPEC",
+        "DERIVED"
+      ],
+      "confidence": "high",
+      "range": [
+        0.53,
+        0.54
+      ],
+      "rationale": "hub-to-centre distance = half the diagonal wheelbase for a symmetric X",
+      "sensitivity": "roll/pitch control authority scales linearly",
+      "derivation": "1.070 / 2"
+    },
+    {
+      "path": "geometry.rotor_azimuths",
+      "value": [
+        -45.0,
+        45.0,
+        135.0,
+        -135.0
+      ],
+      "units": "deg",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "DJI-MTM",
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        -135.0,
+        135.0
+      ],
+      "rationale": "symmetric X; numbering counter-clockwise from front-right (motor 1 front-right per the maintenance-manual summary)",
+      "sensitivity": "layout fixed by symmetry"
+    },
+    {
+      "path": "geometry.spin_dirs",
+      "value": [
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "units": "-",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        -1.0,
+        1.0
+      ],
+      "rationale": "diagonal pairs must counter-rotate for yaw balance; absolute assignment UNVERIFIED (secondary summary contradicts itself)",
+      "sensitivity": "flips the sign of the yaw allocation row only; no effect on any metric"
+    },
+    {
+      "path": "geometry.rotor_height",
+      "value": 0.05,
+      "units": "m",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.0,
+        0.12
+      ],
+      "rationale": "rotor plane slightly above the battery/body centre; not published",
+      "sensitivity": "couples horizontal drag/rotor forces into pitch moments; negligible in the current lumped model"
+    },
+    {
+      "path": "geometry.frontal_reference_area",
+      "units": "m^2",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "drag represented by a lumped coefficient instead",
+      "simulation_value": "simulation_assumptions.drag_quadratic"
+    },
+    {
+      "path": "geometry.landing_gear.bottom_z",
+      "value": -0.33,
+      "units": "m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "DJI-SPEC",
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        -0.36,
+        -0.3
+      ],
+      "rationale": "chosen so gear-to-mast height equals the published 480 mm",
+      "sensitivity": "only ground-contact geometry"
+    },
+    {
+      "path": "geometry.landing_gear.track",
+      "value": 0.5,
+      "units": "m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.4,
+        0.6
+      ],
+      "rationale": "lateral skid spacing; not published",
+      "sensitivity": "landing tip-over margin"
+    },
+    {
+      "path": "geometry.landing_gear.skid_length",
+      "value": 0.6,
+      "units": "m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.45,
+        0.75
+      ],
+      "rationale": "not published",
+      "sensitivity": "landing pitch stability"
+    },
+    {
+      "path": "geometry.centre_of_gravity",
+      "units": "m",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "CoM follows from the assumed component layout",
+      "simulation_value": "mass_properties.components"
+    },
+    {
+      "path": "mass_properties.takeoff_mass_with_battery",
+      "value": 9.74,
+      "units": "kg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "9740 +/- 40 g, with propellers and battery; excludes payload"
+    },
+    {
+      "path": "mass_properties.mass_without_battery",
+      "value": 5.02,
+      "units": "kg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "5020 +/- 20 g, with propellers"
+    },
+    {
+      "path": "mass_properties.max_takeoff_mass",
+      "value": 15.8,
+      "units": "kg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "mass_properties.max_payload",
+      "value": 6.0,
+      "units": "kg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "documentation only; measured at the third gimbal connector at sea level; decreases with altitude"
+    },
+    {
+      "path": "mass_properties.total_mass",
+      "value": 9.74,
+      "units": "kg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "simulation baseline mass = takeoff mass with one TB100, no payload"
+    },
+    {
+      "path": "mass_properties.inertia",
+      "units": "kg m^2",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "derived from assumed lumped components; uncertainty +/-30 % (sensitivity runs)",
+      "simulation_value": "mass_properties.components"
+    },
+    {
+      "path": "mass_properties.inertia_uncertainty_fraction",
+      "value": 0.3,
+      "units": "-",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.15,
+        0.5
+      ],
+      "rationale": "lumped-box estimates of unmeasured airframes typically differ from pendulum measurements by tens of percent",
+      "sensitivity": "attitude-loop bandwidth and torque-disturbance residual scaling"
+    },
+    {
+      "path": "mass_properties.components[battery_tb100].mass",
+      "value": 4.72,
+      "units": "kg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "mass_properties.components[battery_tb100].position",
+      "value": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "units": "m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        -0.05,
+        0.05
+      ],
+      "rationale": "centred under the hub plane",
+      "sensitivity": "CoM offset -> constant torque disturbance"
+    },
+    {
+      "path": "mass_properties.components[battery_tb100].size",
+      "value": [
+        0.3,
+        0.2,
+        0.1
+      ],
+      "units": "m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.08,
+        0.32
+      ],
+      "rationale": "battery dimensions not published",
+      "sensitivity": "inertia only"
+    },
+    {
+      "path": "mass_properties.components[motor_propeller].mass",
+      "value": 0.4,
+      "units": "kg",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.3,
+        0.55
+      ],
+      "rationale": "7510-class motor + 25 in folding propeller; not published",
+      "sensitivity": "roll/pitch inertia (dominant term)"
+    },
+    {
+      "path": "mass_properties.components[arm].mass",
+      "value": 0.25,
+      "units": "kg",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.15,
+        0.35
+      ],
+      "rationale": "folding carbon arm with hinge; not published",
+      "sensitivity": "roll/pitch inertia"
+    },
+    {
+      "path": "mass_properties.components[central_body].mass",
+      "value": "remainder",
+      "units": "kg",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "DERIVED"
+      ],
+      "confidence": "medium",
+      "derivation": "total_mass minus listed components"
+    },
+    {
+      "path": "mass_properties.components[central_body].position",
+      "value": [
+        0.0,
+        0.0,
+        -0.05
+      ],
+      "units": "m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        -0.1,
+        0.0
+      ],
+      "rationale": "avionics and gimbal mount below the hub plane",
+      "sensitivity": "CoM height"
+    },
+    {
+      "path": "mass_properties.components[central_body].size",
+      "value": [
+        0.45,
+        0.35,
+        0.25
+      ],
+      "units": "m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.2,
+        0.5
+      ],
+      "rationale": "visual envelope of the fuselage",
+      "sensitivity": "yaw inertia"
+    },
+    {
+      "path": "propulsion.n_motors",
+      "value": 4,
+      "units": "-",
+      "category": "VERIFIED_SECONDARY",
+      "sources": [
+        "DJI-MTM",
+        "DERIVED"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "propulsion.motor_model",
+      "value": "7510",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "propulsion.motor_manufacturer",
+      "units": "text",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "propulsion.motor_type",
+      "value": "brushless outrunner (assumed)",
+      "units": "text",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "medium",
+      "rationale": "universal for electric multirotors of this class; not stated by DJI",
+      "sensitivity": "none (equivalent model)"
+    },
+    {
+      "path": "propulsion.motor_kv_resistance_torque_constant",
+      "units": "-",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "first-order speed lag used instead of an electrical motor model",
+      "simulation_value": "propulsion.motor_time_constant"
+    },
+    {
+      "path": "propulsion.esc",
+      "units": "text",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "propulsion.propeller_model",
+      "value": "2510F",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC",
+        "DJI-STORE-PROP"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "propulsion.rotor_diameter",
+      "value": 0.635,
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "25 inch"
+    },
+    {
+      "path": "propulsion.propeller_folding",
+      "value": "foldable, sold as CW/CCW pair",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-STORE-PROP"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "path": "propulsion.propeller_pitch",
+      "units": "m",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "simulation_value": "propulsion.thrust_coefficient"
+    },
+    {
+      "path": "propulsion.max_thrust",
+      "units": "N",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "simulation_value": "propulsion.max_thrust_to_weight"
+    },
+    {
+      "path": "propulsion.motor_rpm",
+      "units": "rpm",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "propulsion.propulsion_voltage_nominal",
+      "value": 48.23,
+      "units": "V",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "TB100 standard voltage (13S Li-ion)"
+    },
+    {
+      "path": "propulsion.thrust_coefficient",
+      "value": 0.1,
+      "units": "-",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.08,
+        0.12
+      ],
+      "rationale": "typical static C_T of fixed-pitch multirotor propellers; gives a plausible ~2080 rpm hover for 25 in",
+      "sensitivity": "sets hover rotor speed; hover power is calibrated separately (C_P), so tracking metrics are insensitive"
+    },
+    {
+      "path": "propulsion.power_coefficient",
+      "value": 0.03774,
+      "units": "-",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "DJI-SPEC",
+        "DERIVED"
+      ],
+      "confidence": "medium",
+      "range": [
+        0.033,
+        0.045
+      ],
+      "rationale": "calibrated so modelled hover electrical power = 0.95 x 977 Wh / 53 min = 1050.7 W at 9.74 kg (scripts/calibrate_m400_power.py)",
+      "sensitivity": "energy and endurance scale ~linearly; range covers usable fraction 0.90-1.00 and eta 0.75-0.85",
+      "derivation": "shaft = (P_el - P_avionics) * eta; k_m = shaft / (n Omega_h^3); C_P = k_m (2 pi)^3 / (rho D^5)"
+    },
+    {
+      "path": "propulsion.max_thrust_to_weight",
+      "value": 1.6,
+      "units": "-",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        1.4,
+        2.2
+      ],
+      "rationale": "at the 15.8 kg MTOW; DJI publishes MTOW and 10 m/s climb but no thrust figure",
+      "sensitivity": "saturation margin, fault tolerance to thrust loss"
+    },
+    {
+      "path": "propulsion.max_thrust_reference_mass",
+      "value": 15.8,
+      "units": "kg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "MTOW used as the thrust reference"
+    },
+    {
+      "path": "propulsion.idle_speed_fraction",
+      "value": 0.15,
+      "units": "-",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.1,
+        0.25
+      ],
+      "rationale": "armed idle",
+      "sensitivity": "minimum thrust bound in allocation"
+    },
+    {
+      "path": "propulsion.motor_time_constant",
+      "value": 0.06,
+      "units": "s",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.03,
+        0.12
+      ],
+      "rationale": "large (25 in) rotors respond more slowly than small-drone rotors (~0.02-0.04 s)",
+      "sensitivity": "rate-loop bandwidth; identifiable online only with thrust excitation"
+    },
+    {
+      "path": "propulsion.propulsion_efficiency",
+      "value": 0.8,
+      "units": "-",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.7,
+        0.9
+      ],
+      "rationale": "lumped motor+ESC electrical-to-shaft efficiency",
+      "sensitivity": "absorbed in the C_P calibration for hover"
+    },
+    {
+      "path": "battery.model",
+      "value": "TB100 Intelligent Flight Battery",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC",
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.count_per_aircraft",
+      "value": 1,
+      "units": "-",
+      "category": "VERIFIED_SECONDARY",
+      "sources": [
+        "DJI-SPEC",
+        "DERIVED"
+      ],
+      "confidence": "high",
+      "derivation": "5.02 kg + 4.72 kg = 9.74 kg published takeoff mass"
+    },
+    {
+      "path": "battery.chemistry",
+      "value": "Li-ion",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.series_cells",
+      "value": 13,
+      "units": "-",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.parallel_cells",
+      "units": "-",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.nominal_voltage",
+      "value": 48.23,
+      "units": "V",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.max_charge_voltage",
+      "value": 54.6,
+      "units": "V",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.capacity",
+      "value": 20.254,
+      "units": "Ah",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.energy",
+      "value": 977.0,
+      "units": "Wh",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.mass",
+      "value": 4.72,
+      "units": "kg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.dimensions",
+      "units": "m",
+      "category": "UNKNOWN",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "not listed on the spec page"
+    },
+    {
+      "path": "battery.max_discharge_rate",
+      "value": 4.0,
+      "units": "C",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.max_charge_rate",
+      "value": 2.0,
+      "units": "C",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.cycle_count",
+      "value": 400,
+      "units": "cycles",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.discharge_temperature",
+      "value": [
+        -20.0,
+        75.0
+      ],
+      "units": "degC",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.charge_temperature",
+      "value": [
+        5.0,
+        45.0
+      ],
+      "units": "degC",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.self_heating",
+      "value": "battery heating and low-temperature self-heating charging",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.bms_firmware",
+      "value": "v16.00.00.63",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.tethered_variant",
+      "value": "TB100C Tethered Battery exists (firmware v17.00.00.39)",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.internal_resistance",
+      "units": "ohm",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "simulation_value": "simulation_assumptions.battery_r0"
+    },
+    {
+      "path": "battery.max_flight_time",
+      "value": 59.0,
+      "units": "min",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "manufacturer claim, no wind; ~53 min with AP100 parachute. NOT a simulation endurance guarantee"
+    },
+    {
+      "path": "battery.max_hover_time",
+      "value": 53.0,
+      "units": "min",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "manufacturer claim, no wind; used only to calibrate C_P"
+    },
+    {
+      "path": "battery.max_flight_distance",
+      "value": 49.0,
+      "units": "km",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.charging_station",
+      "value": "BS100: 11.8 kg, 605x410x250 mm, charges 3 TB100 + 2 WB37; TB100 ~45 min fast / ~110 min silent at 220 V",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "battery.rth_battery_reserve_setting",
+      "value": "user-settable RTH battery reserve (Battery Settings)",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.gnss_constellations",
+      "value": "GPS + Galileo + BeiDou + GLONASS (GLONASS only with RTK enabled)",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.rtk_accuracy_horizontal",
+      "value": "1 cm + 1 ppm",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "RTK fix; statistical definition (1-sigma/RMS) not stated"
+    },
+    {
+      "path": "sensors.rtk_accuracy_vertical",
+      "value": "1.5 cm + 1 ppm",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.rtk_heading_accuracy",
+      "value": 2.0,
+      "units": "deg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "better than 2 deg"
+    },
+    {
+      "path": "sensors.hover_accuracy_rtk",
+      "value": [
+        0.1,
+        0.1
+      ],
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "[vertical, horizontal], moderate or no wind; closed-loop figure"
+    },
+    {
+      "path": "sensors.hover_accuracy_vision",
+      "value": [
+        0.1,
+        0.3
+      ],
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.hover_accuracy_gnss",
+      "value": [
+        0.5,
+        0.5
+      ],
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.imu",
+      "units": "text",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "simulation_value": "simulation_assumptions.sensors.imu"
+    },
+    {
+      "path": "sensors.barometer",
+      "units": "text",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "simulation_value": "simulation_assumptions.sensors.baro"
+    },
+    {
+      "path": "sensors.compass",
+      "units": "text",
+      "category": "UNKNOWN",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "medium",
+      "note": "heading modelled from the published RTK heading accuracy",
+      "simulation_value": "simulation_assumptions.sensors.heading"
+    },
+    {
+      "path": "sensors.vision_system",
+      "value": "omnidirectional binocular vision (fisheye); fwd/bwd measurement 0.4-21 m, lateral 0.6-21 m, downward 0.5-19 m; 90x90 deg FOV fwd/bwd/lateral",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.rotating_lidar",
+      "value": "horizontal rotating LiDAR, 0.5-100 m, 360x58 deg FOV, 520000 pts/s, 905 nm Class 1",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.upper_lidar",
+      "value": "3D ToF, 0.5-25 m (night), 60 deg FOV",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.downward_ir_range",
+      "value": "3D infrared, 0.3-8 m, 60 deg FOV",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.mmwave_radar",
+      "value": "six-direction mmWave radar; power-line detection up to 36 m (12 mm cable) / 50 m (21.6 mm), +/-45 deg",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.fpv_camera",
+      "value": "1080p/30 fps, 150 deg DFOV, starlight night vision",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.adsb_in",
+      "value": "dual-antenna ADS-B In, up to 20 km",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.payload_ports",
+      "value": "4x E-Port V2 (120 W per port), 1x USB-C debug, 2x Cellular Dongle 2",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.gimbal_capacity",
+      "value": "single 1400 g; dual 950 g each; third connector 3 kg quick-release / 6 kg screw lock",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "sensors.raw_sensor_access",
+      "units": "text",
+      "category": "UNKNOWN",
+      "sources": [
+        "DJI-MSDK-GH",
+        "DJI-DEV-RN"
+      ],
+      "confidence": "medium",
+      "note": "SDKs expose fused telemetry (attitude, velocity, position, battery); raw IMU access for M400 not confirmed. PSDK point-cloud subscription for LiDAR/radar reported only by a mirror README"
+    },
+    {
+      "path": "flight_control_interface.remote_controller",
+      "value": "DJI RC Plus 2 Enterprise Enhanced: 7.02 in 1920x1200 1400 nit; 46.8 Wh internal (3.8 h), WB37 external (3.2 h); 1.15 kg; -20..50 degC; 8 GB RAM/128 GB",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.video_link",
+      "value": "DJI O4 Enterprise Enhanced; 3-channel 1080p/30; up to 40 km FCC / 20 km CE; 80 Mbps",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.video_latency",
+      "units": "s",
+      "category": "UNKNOWN",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.aircraft_firmware",
+      "value": "v17.01.05.25 (2026-05-07)",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.rc_firmware",
+      "value": "v01.64.08.12 (2026-05-07)",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.pilot_app",
+      "value": "DJI Pilot 2 Android v17.1.5.14 (2026-05-07)",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.manifold3_firmware",
+      "value": "v17.00.01.01",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.msdk_support",
+      "value": "Mobile SDK V5 lists Matrice 400 as a supported product (latest 5.18.0)",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-MSDK-GH"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.msdk_on_rc_plus_2",
+      "units": "text",
+      "category": "UNKNOWN",
+      "sources": [
+        "DJI-MSDK-GH"
+      ],
+      "confidence": "medium",
+      "note": "README does not name supported remote controllers; must be confirmed before integration"
+    },
+    {
+      "path": "flight_control_interface.msdk_virtual_stick",
+      "value": "roll/pitch VELOCITY or ANGLE, yaw ANGLE or ANGULAR_VELOCITY, vertical VELOCITY or POSITION; recommended send rate 5-25 Hz",
+      "units": "text",
+      "category": "VERIFIED_SECONDARY",
+      "sources": [
+        "DJI-MSDK-VS"
+      ],
+      "confidence": "medium",
+      "note": "generic V5 API; Matrice-400-specific behaviour and limits UNVERIFIED"
+    },
+    {
+      "path": "flight_control_interface.psdk_support",
+      "value": "Payload SDK lists Matrice 400 from 3.12.0 (2025-06-26); 3.16.0 (2026-03-31) adds remaining-flight-time and low-battery-RTH-threshold queries",
+      "units": "text",
+      "category": "VERIFIED_SECONDARY",
+      "sources": [
+        "DJI-DEV-RN",
+        "DJI-PSDK-GH"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "path": "flight_control_interface.psdk_joystick",
+      "value": "joystick (velocity/position/thrust) control after obtaining joystick authority; RC actions can revoke authority (documented for M300/M350)",
+      "units": "text",
+      "category": "VERIFIED_SECONDARY",
+      "sources": [
+        "DJI-PSDK-GH"
+      ],
+      "confidence": "medium",
+      "note": "Matrice-400 authority rules UNVERIFIED"
+    },
+    {
+      "path": "flight_control_interface.cloud_api_support",
+      "value": "Cloud API 1.14.0 (2025-04-15) adds Matrice 400",
+      "units": "text",
+      "category": "VERIFIED_SECONDARY",
+      "sources": [
+        "DJI-DEV-RN"
+      ],
+      "confidence": "medium"
+    },
+    {
+      "path": "flight_control_interface.low_level_motor_control",
+      "units": "text",
+      "category": "NOT_PUBLICLY_DISCLOSED",
+      "sources": [
+        "DJI-MSDK-VS",
+        "DJI-PSDK-GH"
+      ],
+      "confidence": "high",
+      "note": "no reviewed public interface exposes per-motor commands or the attitude/rate loops; research algorithms must not depend on it"
+    },
+    {
+      "path": "flight_control_interface.t_mode_close_range",
+      "value": "T-mode close-range tasks: min flight speed 0.5 m/s, min horizontal obstacle-avoidance distance 1.5 m",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.cleaning_mode",
+      "value": "Cleaning mode (in T-mode): only mmWave radar used for obstacle avoidance, min horizontal distance 1.5 m",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.delivery_mode",
+      "value": "Delivery mode can be enabled via the PSDK interface",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-RN"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "flight_control_interface.failsafe_defaults",
+      "units": "text",
+      "category": "UNKNOWN",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "M400 user manual not obtained; RTH/low-battery/signal-loss defaults unverified"
+    },
+    {
+      "path": "limits.operating_temperature",
+      "value": [
+        -20.0,
+        50.0
+      ],
+      "units": "degC",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "without solar radiation"
+    },
+    {
+      "path": "limits.ingress_protection",
+      "value": "IP55",
+      "units": "text",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "limits.max_wind_resistance",
+      "value": 12.0,
+      "units": "m/s",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "take-off and landing; an operating reference, not a simulated safety guarantee"
+    },
+    {
+      "path": "limits.max_takeoff_altitude",
+      "value": 7000.0,
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "limits.max_horizontal_speed",
+      "value": 25.0,
+      "units": "m/s",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "limits.max_ascent_speed",
+      "value": 10.0,
+      "units": "m/s",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "limits.max_descent_speed",
+      "value": 8.0,
+      "units": "m/s",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "limits.max_tilt_deg",
+      "value": 35.0,
+      "units": "deg",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high",
+      "note": "published as max pitch angle; applied to roll as well (assumption)"
+    },
+    {
+      "path": "limits.max_yaw_rate_deg_s",
+      "value": 100.0,
+      "units": "deg/s",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "limits.max_body_rate_deg_s",
+      "value": 120.0,
+      "units": "deg/s",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        60.0,
+        200.0
+      ],
+      "rationale": "roll/pitch rate limit not published",
+      "sensitivity": "aggressiveness of attitude recovery"
+    },
+    {
+      "path": "simulation_assumptions.gravity",
+      "value": 9.80665,
+      "units": "m/s^2",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ISO-2533"
+      ],
+      "confidence": "high",
+      "range": [
+        9.78,
+        9.83
+      ],
+      "rationale": "standard gravity",
+      "sensitivity": "none within range"
+    },
+    {
+      "path": "simulation_assumptions.air_density_sea_level",
+      "value": 1.225,
+      "units": "kg/m^3",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ISO-2533"
+      ],
+      "confidence": "high",
+      "range": [
+        1.0,
+        1.3
+      ],
+      "rationale": "ISA sea level; site altitude/temperature handled by environment/atmosphere.py",
+      "sensitivity": "thrust and power scale with density"
+    },
+    {
+      "path": "simulation_assumptions.drag_linear",
+      "value": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "units": "N s/m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.0,
+        0.5
+      ],
+      "rationale": "lumped model uses quadratic drag only",
+      "sensitivity": "low-speed disturbance rejection"
+    },
+    {
+      "path": "simulation_assumptions.drag_quadratic",
+      "value": [
+        0.107,
+        0.107,
+        0.3
+      ],
+      "units": "N s^2/m^2",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "DJI-SPEC",
+        "DERIVED"
+      ],
+      "confidence": "low",
+      "range": [
+        0.05,
+        0.4
+      ],
+      "rationale": "horizontal: m g tan(35 deg) / (25 m/s)^2 assumes the published top speed is drag-limited at the published max pitch (upper-bound argument); vertical assumed",
+      "sensitivity": "wind disturbance force ~ linear in coefficient",
+      "derivation": "9.74 * 9.80665 * tan(35 deg) / 25^2"
+    },
+    {
+      "path": "simulation_assumptions.avionics_power",
+      "value": 60.0,
+      "units": "W",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        30.0,
+        120.0
+      ],
+      "rationale": "flight controller, sensors (LiDAR, radar, vision), transmission; not published",
+      "sensitivity": "absorbed in C_P calibration for hover; matters at low thrust"
+    },
+    {
+      "path": "simulation_assumptions.usable_energy_fraction",
+      "value": 0.95,
+      "units": "-",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.85,
+        1.0
+      ],
+      "rationale": "fraction of 977 Wh available before cutoff in the 53 min hover claim",
+      "sensitivity": "endurance, C_P calibration"
+    },
+    {
+      "path": "simulation_assumptions.battery_r0",
+      "value": 0.06,
+      "units": "ohm",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.03,
+        0.12
+      ],
+      "rationale": "13S x Np pack of high-energy Li-ion cells (~15-25 mOhm each) plus wiring; Np not published",
+      "sensitivity": "voltage sag (~1.3 V at hover); thrust headroom at low SoC"
+    },
+    {
+      "path": "simulation_assumptions.battery_r1",
+      "value": 0.03,
+      "units": "ohm",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.01,
+        0.08
+      ],
+      "rationale": "1-RC polarisation branch",
+      "sensitivity": "transient sag"
+    },
+    {
+      "path": "simulation_assumptions.battery_c1",
+      "value": 2000.0,
+      "units": "F",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        500.0,
+        5000.0
+      ],
+      "rationale": "polarisation time constant R1*C1 = 60 s",
+      "sensitivity": "transient sag"
+    },
+    {
+      "path": "simulation_assumptions.battery_cell_cutoff",
+      "value": 3.0,
+      "units": "V",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        2.8,
+        3.3
+      ],
+      "rationale": "generic Li-ion cutoff; DJI threshold unknown",
+      "sensitivity": "end of usable energy"
+    },
+    {
+      "path": "simulation_assumptions.battery_ocv_curve.soc",
+      "value": [
+        0.0,
+        0.05,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.6,
+        0.7,
+        0.8,
+        0.9,
+        1.0
+      ],
+      "units": "-",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.0,
+        1.0
+      ],
+      "rationale": "generic Li-ion (NMC-class) open-circuit curve; DJI cell chemistry details not published",
+      "sensitivity": "voltage-SoC mapping"
+    },
+    {
+      "path": "simulation_assumptions.battery_ocv_curve.cell_voltage",
+      "value": [
+        3.0,
+        3.3,
+        3.45,
+        3.56,
+        3.63,
+        3.68,
+        3.73,
+        3.8,
+        3.88,
+        3.97,
+        4.07,
+        4.2
+      ],
+      "units": "V",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        3.0,
+        4.2
+      ],
+      "rationale": "endpoints match the published 54.6 V / 13 = 4.2 V max; midpoint ~3.71 V matches 48.23 V / 13",
+      "sensitivity": "voltage-SoC mapping"
+    },
+    {
+      "path": "simulation_assumptions.ground_contact.stiffness",
+      "value": 20000.0,
+      "units": "N/m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        10000.0,
+        60000.0
+      ],
+      "rationale": "~5 mm static compression; numerical stability at dt = 4 ms",
+      "sensitivity": "touchdown transients only"
+    },
+    {
+      "path": "simulation_assumptions.ground_contact.damping_ratio",
+      "value": 0.7,
+      "units": "-",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.3,
+        1.0
+      ],
+      "rationale": "well-damped landing gear",
+      "sensitivity": "touchdown bounce"
+    },
+    {
+      "path": "simulation_assumptions.ground_contact.friction_coefficient",
+      "value": 0.6,
+      "units": "-",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.3,
+        1.0
+      ],
+      "rationale": "skid on a concrete pad",
+      "sensitivity": "sliding at touchdown"
+    },
+    {
+      "path": "simulation_assumptions.vehicle_clearance_radius",
+      "value": 0.853,
+      "units": "m",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "DERIVED"
+      ],
+      "confidence": "medium",
+      "range": [
+        0.8,
+        0.9
+      ],
+      "rationale": "hub radius 0.535 m + rotor radius 0.3175 m (+ rounding)",
+      "sensitivity": "minimum facade clearance constraint",
+      "derivation": "0.535 + 0.635 / 2"
+    },
+    {
+      "path": "simulation_assumptions.sensors.imu.rate",
+      "value": 250.0,
+      "units": "Hz",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        200.0,
+        1000.0
+      ],
+      "rationale": "equal to the control rate",
+      "sensitivity": "estimator propagation step"
+    },
+    {
+      "path": "simulation_assumptions.sensors.imu.gyro_noise_density",
+      "value": 0.00025,
+      "units": "rad/s/sqrt(Hz)",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.0001,
+        0.001
+      ],
+      "rationale": "class-representative industrial MEMS (~0.014 deg/s/sqrt(Hz))",
+      "sensitivity": "attitude noise"
+    },
+    {
+      "path": "simulation_assumptions.sensors.imu.gyro_bias_rw",
+      "value": 2e-05,
+      "units": "rad/s^2/sqrt(Hz)",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        5e-06,
+        0.0001
+      ],
+      "rationale": "MEMS bias instability class",
+      "sensitivity": "attitude drift without heading aid"
+    },
+    {
+      "path": "simulation_assumptions.sensors.imu.accel_noise_density",
+      "value": 0.0015,
+      "units": "m/s^2/sqrt(Hz)",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.0005,
+        0.005
+      ],
+      "rationale": "class-representative MEMS (~150 ug/sqrt(Hz))",
+      "sensitivity": "velocity noise, thrust-gain residual noise"
+    },
+    {
+      "path": "simulation_assumptions.sensors.imu.accel_bias_rw",
+      "value": 0.0002,
+      "units": "m/s^3/sqrt(Hz)",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        5e-05,
+        0.001
+      ],
+      "rationale": "MEMS class",
+      "sensitivity": "vertical drift without GNSS/baro"
+    },
+    {
+      "path": "simulation_assumptions.sensors.imu.vibration_accel_std",
+      "value": 0.05,
+      "units": "m/s^2",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.0,
+        0.3
+      ],
+      "rationale": "residual rotor vibration after isolation",
+      "sensitivity": "accelerometer residual noise"
+    },
+    {
+      "path": "simulation_assumptions.sensors.gnss.rate",
+      "value": 10.0,
+      "units": "Hz",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        5.0,
+        20.0
+      ],
+      "rationale": "typical RTK output rate",
+      "sensitivity": "position update rate"
+    },
+    {
+      "path": "simulation_assumptions.sensors.gnss.latency",
+      "value": 0.1,
+      "units": "s",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.05,
+        0.25
+      ],
+      "rationale": "receiver + transport; timestamps assumed reported",
+      "sensitivity": "estimator lag"
+    },
+    {
+      "path": "simulation_assumptions.sensors.gnss.position_std_horizontal",
+      "value": 0.015,
+      "units": "m",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "DJI-SPEC",
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        0.01,
+        0.05
+      ],
+      "rationale": "published RTK fix 1 cm + 1 ppm treated as ~1-sigma plus multipath margin",
+      "sensitivity": "hover precision"
+    },
+    {
+      "path": "simulation_assumptions.sensors.gnss.position_std_vertical",
+      "value": 0.02,
+      "units": "m",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "DJI-SPEC",
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        0.015,
+        0.08
+      ],
+      "rationale": "published 1.5 cm + 1 ppm",
+      "sensitivity": "altitude precision"
+    },
+    {
+      "path": "simulation_assumptions.sensors.gnss.velocity_std",
+      "value": 0.05,
+      "units": "m/s",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.02,
+        0.15
+      ],
+      "rationale": "Doppler velocity class",
+      "sensitivity": "velocity estimate"
+    },
+    {
+      "path": "simulation_assumptions.sensors.baro.rate",
+      "value": 50.0,
+      "units": "Hz",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        20.0,
+        100.0
+      ],
+      "rationale": "typical",
+      "sensitivity": "-"
+    },
+    {
+      "path": "simulation_assumptions.sensors.baro.altitude_std",
+      "value": 0.1,
+      "units": "m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.03,
+        0.3
+      ],
+      "rationale": "MEMS barometer incl. propwash",
+      "sensitivity": "vertical estimate without GNSS"
+    },
+    {
+      "path": "simulation_assumptions.sensors.baro.bias_rw",
+      "value": 0.005,
+      "units": "m/sqrt(s)",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.0,
+        0.02
+      ],
+      "rationale": "thermal / weather drift",
+      "sensitivity": "slow altitude drift"
+    },
+    {
+      "path": "simulation_assumptions.sensors.heading.rate",
+      "value": 10.0,
+      "units": "Hz",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        5.0,
+        20.0
+      ],
+      "rationale": "dual-antenna RTK heading",
+      "sensitivity": "-"
+    },
+    {
+      "path": "simulation_assumptions.sensors.heading.std",
+      "value": 0.0175,
+      "units": "rad",
+      "category": "ENGINEERING_ESTIMATE",
+      "sources": [
+        "DJI-SPEC",
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        0.0087,
+        0.035
+      ],
+      "rationale": "published heading accuracy better than 2 deg treated as ~2-sigma (1 deg 1-sigma)",
+      "sensitivity": "yaw precision"
+    },
+    {
+      "path": "simulation_assumptions.sensors.facade_range.rate",
+      "value": 20.0,
+      "units": "Hz",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        10.0,
+        50.0
+      ],
+      "rationale": "distance to facade from vision/LiDAR (published measurement range 0.4-21 m)",
+      "sensitivity": "stand-off monitoring"
+    },
+    {
+      "path": "simulation_assumptions.sensors.facade_range.std",
+      "value": 0.03,
+      "units": "m",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.01,
+        0.1
+      ],
+      "rationale": "not published; raw access not confirmed",
+      "sensitivity": "stand-off estimate"
+    },
+    {
+      "path": "simulation_assumptions.sensors.facade_range.min_range",
+      "value": 0.4,
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "simulation_assumptions.sensors.facade_range.max_range",
+      "value": 21.0,
+      "units": "m",
+      "category": "VERIFIED_OFFICIAL",
+      "sources": [
+        "DJI-SPEC"
+      ],
+      "confidence": "high"
+    },
+    {
+      "path": "simulation_assumptions.sensors.battery_telemetry.rate",
+      "value": 10.0,
+      "units": "Hz",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        1.0,
+        50.0
+      ],
+      "rationale": "SDK battery telemetry rate not confirmed for M400",
+      "sensitivity": "energy-state latency"
+    },
+    {
+      "path": "simulation_assumptions.sensors.battery_telemetry.voltage_std",
+      "value": 0.05,
+      "units": "V",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.01,
+        0.2
+      ],
+      "rationale": "BMS measurement",
+      "sensitivity": "-"
+    },
+    {
+      "path": "simulation_assumptions.sensors.battery_telemetry.current_std",
+      "value": 0.3,
+      "units": "A",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "low",
+      "range": [
+        0.05,
+        1.0
+      ],
+      "rationale": "BMS measurement",
+      "sensitivity": "measured power noise"
+    },
+    {
+      "path": "simulation_assumptions.sensors.battery_telemetry.soc_quantum",
+      "value": 0.01,
+      "units": "-",
+      "category": "SIMULATION_ASSUMPTION",
+      "sources": [
+        "ENG"
+      ],
+      "confidence": "medium",
+      "range": [
+        0.001,
+        0.01
+      ],
+      "rationale": "integer percent reported",
+      "sensitivity": "-"
+    }
+  ]
+}

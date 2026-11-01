@@ -34,3 +34,20 @@ aircraft:
       rate_i: [2.5, 2.5, 1.2]
       rate_i_limit: 3.0
       min_thrust_fraction: 0.2
+  dji_matrice_400:
+    # Same pole-placement design as m400_reference_quad (identical assumed tau_m = 0.06 s and
+    # inertia), except the rate integrator, re-derived for the disturbances of the Phase G scenarios:
+    # a 30 % single-rotor effectiveness loss needs ~0.3 * 23.9 N * 0.378 m = 2.7 N m of steady
+    # compensation (8.2 rad/s^2 on Jxx = 0.33 kg m^2); a 2 cm CoM offset needs ~1.9 N m (5.8 rad/s^2).
+    # rate_i_limit = 10 rad/s^2 covers both; rate_i = 4 places the PI zero at 0.5 rad/s, a decade
+    # below the rate-loop natural frequency (11.5 rad/s). Verified in tests/test_m400_closed_loop.py.
+    position_design:
+      xy: {wn: 0.9, zeta: 0.8, a: 0.4}
+      z: {wn: 1.2, zeta: 0.8, a: 0.5}
+    gains:
+      pos_i_limit: [2.0, 2.0, 6.0]
+      att_p: [3.3, 3.3, 2.0]
+      rate_p: [8.0, 8.0, 4.0]
+      rate_i: [4.0, 4.0, 2.0]
+      rate_i_limit: 10.0
+      min_thrust_fraction: 0.2

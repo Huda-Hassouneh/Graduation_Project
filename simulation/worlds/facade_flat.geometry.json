@@ -1,0 +1,88 @@
+{
+  "boxes": [
+    {
+      "centre": [
+        6.0,
+        13.0,
+        6.0
+      ],
+      "kind": "solid",
+      "name": "main_block",
+      "size": [
+        12.0,
+        10.0,
+        12.0
+      ],
+      "yaw": 0.0
+    },
+    {
+      "centre": [
+        6.0,
+        7.5,
+        6.5
+      ],
+      "kind": "keepout",
+      "name": "keepout_main_block",
+      "size": [
+        14.0,
+        1.0,
+        13.0
+      ],
+      "yaw": 0.0
+    }
+  ],
+  "frame": "world ENU; box centre/size in metres; yaw about +z [rad]",
+  "generated_by": "simulation/worlds/generate_facade_world.py",
+  "spec": {
+    "aircraft": "research_quad",
+    "aircraft_static": true,
+    "balcony_depth": 1.2,
+    "balcony_levels": [
+      4.0,
+      7.0
+    ],
+    "balcony_slab": 0.2,
+    "balcony_spans": [
+      [
+        1.5,
+        4.5
+      ],
+      [
+        7.5,
+        10.5
+      ]
+    ],
+    "building_depth": 10.0,
+    "facade_height": 12.0,
+    "facade_normal": [
+      0.0,
+      -1.0,
+      0.0
+    ],
+    "facade_origin": [
+      0.0,
+      8.0,
+      0.0
+    ],
+    "facade_tangent": [
+      1.0,
+      0.0,
+      0.0
+    ],
+    "facade_width": 12.0,
+    "ground_size": 120.0,
+    "keepout_margin": 1.0,
+    "name": "facade_flat",
+    "pad_size": 2.0,
+    "pad_thickness": 0.02,
+    "railing_height": 1.0,
+    "railing_thickness": 0.05,
+    "setback_depth": 2.0,
+    "setback_height": 9.0,
+    "setback_width": 6.0,
+    "variant": "flat",
+    "wing_height": 15.0,
+    "wing_projection": 1.5,
+    "wing_width": 4.0
+  }
+}

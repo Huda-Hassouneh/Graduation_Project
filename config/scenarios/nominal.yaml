@@ -1,0 +1,4 @@
+name: nominal
+description: Nominal 3-pass facade coverage, calm air, healthy aircraft and sensors.
+fault_class: none
+expected_behaviour: No anomaly; mission completed; framework issues no recovery action.

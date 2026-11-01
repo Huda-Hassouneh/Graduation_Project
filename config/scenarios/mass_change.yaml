@@ -1,0 +1,7 @@
+name: mass_change
+description: Persistent mass change - payload/mass increases by 20 % (inertia scaled) during coverage.
+fault_class: mass_or_thrust_change
+truth_events:
+  - {t: 45.0, type: mass_scale, value: 1.20}
+randomize: {t_jitter: 10.0, mag_jitter: 0.1}
+expected_behaviour: Thrust-gain residual persistent without torque signature; model update; continue.

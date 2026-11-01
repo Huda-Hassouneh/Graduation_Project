@@ -1,0 +1,14 @@
+name: generalization
+description: Unseen values and sequence - 35 % mass increase at a different time, crosswind gust train, aged battery, 1500 m site.
+fault_class: mass_or_thrust_change
+site: {altitude_msl: 1500.0, delta_t: 10.0}
+battery: {soc0: 0.9, capacity_scale: 0.85, r0_scale: 1.5}
+wind:
+  mean: {speed_ref: 2.0, direction_deg: 120.0, z_ref: 10.0, alpha: 0.2, direction_rate_deg_s: 1.0}
+  gusts:
+    - {t_start: 30.0, duration: 3.0, amplitude: [4.0, 0.0, 0.0]}
+    - {t_start: 75.0, duration: 5.0, amplitude: [-3.0, 3.0, 0.0]}
+truth_events:
+  - {t: 55.0, type: mass_scale, value: 1.35}
+randomize: {t_jitter: 12.0, mag_jitter: 0.15}
+expected_behaviour: Parameters outside the design cases; evaluates robustness of detection thresholds and decisions.

@@ -24,6 +24,9 @@ from graduation_project.planning.trajectories import (
 FACADE_ORIGIN = (0.0, 8.0, 0.0)
 FACADE_TANGENT = (1.0, 0.0, 0.0)
 FACADE_NORMAL = (0.0, -1.0, 0.0)
+FACADE_WIDTH_M = 12.0  # facade spans x in [0, FACADE_WIDTH_M] along FACADE_TANGENT
+SCAN_Z_MIN_M = 3.0
+SCAN_Z_MAX_M = 9.0
 STANDOFF_M = 3.0
 
 
@@ -88,8 +91,8 @@ def helix_3d() -> Scenario:
 
 
 def _raster(vertical: bool, passes: int, repeats: int = 1) -> WaypointTrajectory:
-    wps = facade_raster_waypoints(FACADE_ORIGIN, FACADE_TANGENT, FACADE_NORMAL, width=12.0, z_min=3.0,
-                                  z_max=9.0, standoff=STANDOFF_M, n_passes=passes, vertical=vertical)
+    wps = facade_raster_waypoints(FACADE_ORIGIN, FACADE_TANGENT, FACADE_NORMAL, width=FACADE_WIDTH_M,
+                                  z_min=SCAN_Z_MIN_M, z_max=SCAN_Z_MAX_M, standoff=STANDOFF_M, n_passes=passes, vertical=vertical)
     seq = list(wps)
     for _ in range(repeats - 1):
         seq += list(reversed(seq[-len(wps):]))[1:]
