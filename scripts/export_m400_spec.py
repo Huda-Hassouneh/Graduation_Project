@@ -70,6 +70,5 @@ def main() -> int:
     print(f"wrote {OUT.relative_to(REPO)} and {TABLE.relative_to(REPO)}: {category_counts(spec)}")
     return 0
 
-
 if __name__ == "__main__":
     raise SystemExit(main())
